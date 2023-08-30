@@ -86,7 +86,9 @@ a {
   --max: 1.25em;
   /* maximum value */
 }
-
+small {
+  font-size: 1rem;
+}
 /* links */
 a {
   transition: var(--transition);
