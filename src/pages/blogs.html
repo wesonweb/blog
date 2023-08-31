@@ -11,6 +11,6 @@ tags: "pages"
   {% for blog in collections.blogs | reverse %}
     <small>{{ blog.data.date.toDateString('en-GB') }}</small>
     <h2 class="blog__title"><a href="{{ blog.url | url }}" class="dashed">{{ blog.data.title }}</a></h2>
-    <p>{{ blog.data.summary }}</p>
+    <!-- <p>{{ blog.data.summary }}</p> -->
   {% endfor %}
 </section>
