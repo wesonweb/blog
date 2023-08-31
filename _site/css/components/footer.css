@@ -1,8 +1,12 @@
-.footer__content {
+/* .footer__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
+}
+
+.footer__content p {
+  margin: 0;
 }
 
 .footer__links {
@@ -17,4 +21,4 @@ svg:hover path {
 }
 svg path {
   transition: var(--transition);
-}
+} */
