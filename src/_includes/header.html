@@ -5,10 +5,8 @@
   </div>
 
   <nav id="main-nav" aria-label="main">
-    {% for link in collections.pages %}
-    <a {% if currentUrl===link.url %} aria-current="page" aria-label="current-page" {% endif %} class="nav__link" href="{{ link.url }}">
-      {{ link.data.title }}
+    <a {% if currentUrl===link.url %} aria-current="page" aria-label="current-page" {% endif %} class="nav__link" href="/blogs">
+      blogs
     </a>
-    {% endfor %}
   </nav>
 </div>
