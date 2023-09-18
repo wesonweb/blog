@@ -11,6 +11,9 @@
   "author": "Wes Mehaffy",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "cssnano": "^6.0.1",
+    "postcss-cli": "^10.1.0",
+    "postcss-preset-env": "^9.1.3"
   }
 }
