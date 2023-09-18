@@ -1,6 +1,6 @@
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/")
-  eleventyConfig.addPassthroughCopy("src/bundle.css")
+  eleventyConfig.addPassthroughCopy("bundle.css")
   eleventyConfig.addWatchTarget("src/css/")
   eleventyConfig.addWatchTarget("src/favicons/")
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}` )
