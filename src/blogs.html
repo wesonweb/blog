@@ -5,4 +5,5 @@ title: 'Blogs'
 
 {% for blog in collections.blogs %}
   <h2><a href="{{blog.url}}" class="dashed">{{ blog.data.title }}</a></h2>
+  <p>{{ blog.data.date.toLocaleDateString('en-GB', {weekday: 'long', year: 'numeric', day: 'numeric' })}}</p>
 {% endfor %}
