@@ -204,3 +204,30 @@ svg path {
 .blog__title {
   margin-bottom: 2rem;
 }
+
+.tag__container {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+
+}
+.tag {
+  display: inline-block;
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: var(--accent);
+  color: var(--background);
+}
+.tag:visited,
+.tag:hover,
+.tag:focus,
+.tag:active {
+  color: var(--background) !important;
+  opacity: var(--opacity);
+}
+
+.return__blogs {
+  margin-top: 2rem;
+}
