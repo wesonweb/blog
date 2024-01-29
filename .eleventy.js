@@ -4,6 +4,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget("src/css/")
   eleventyConfig.addWatchTarget("src/favicons/")
   eleventyConfig.addFilter('cssmin', require('./src/_filters/cssmin.js'));
+  eleventyConfig.addCollection('blogs', function(collection) {
+    return collection.getFilteredByGlob('./src/blogs/**/*.html').reverse();
+  });
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}` )
 
   return {

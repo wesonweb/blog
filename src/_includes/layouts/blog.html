@@ -10,9 +10,9 @@
   <div class="container">
     {{ content | safe }}
     <ul class="tag__container">
-    {% for tag in tags %}
-    <li><a href="/blogs/tag/{{ tag | slugify }}/" class="tag">{{ tag }}</a></li>
-    {% endfor %}
+      {% for tag in tags %}
+      <li><a href="/blogs/tag/{{ tag | slugify }}/" class="tag">{{ tag }}</a></li>
+      {% endfor %}
     </ul>
     {% include "return.html" %}
     </div>
