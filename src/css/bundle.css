@@ -117,6 +117,8 @@ small {
   font-size: 1rem;
 }
 /* links */
+
+
 a:not(.logo):not(.nav__link):not(.social__link) {
   border-bottom: 2px dashed var(--accent);
   padding-bottom: 4px;
@@ -142,6 +144,15 @@ a[aria-label="current-page"]:not(.logo) {
 }
 a[aria-label="current-page"]:not(.nav__link) {
   color: var(--accent);
+}
+
+a.link--primary {
+  color: var(--accent);
+  border-bottom: none !important;
+}
+
+a.link--primary:hover {
+  opacity: var(--opacity);
 }
 
 /* images */
