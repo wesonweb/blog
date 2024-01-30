@@ -46,7 +46,7 @@ experience using it quite good. Seeing as Heroku have axed the free/hobby tier I
 <p>The first step is to ensure the app is a repository on Github. You can create the server and client sides as separate
 repos and deploy them separately but my app is a mono-repo with both client and server sides in the one repo. Render
 lets you select the repo and the branch that you wish to deploy from. I chose main.</p>
-<p>I set the root directory as ./server and added the build command <code>npm i && cd ../client && npm i && npm run build</code> which
+<p>Inside Render's settings I set the root directory as ./server and added the build command <code>npm i && cd ../client && npm i && npm run build</code> which
 would install the relevant dependencies listed in the <code>package.json</code> file and then cd into the client folder and run the command <code>npm run build</code> which
 creates the <code>/dist</code> folder with the prepared Vite app index.html and assets.</p>
 <p>Render asks for the start command - <code>npm run start</code> - which starts the server running.</p>
