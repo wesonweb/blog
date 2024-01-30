@@ -1,0 +1,40 @@
+---
+title: "Deploying to Render"
+date: 2024-01-30
+tags:
+- API
+- React
+- Node
+---
+<h1>{{ title }}</h1>
+
+<p>Deploying a full stack web-app is something I did during my Le Wagon bootcamp using Heroku. I found the developer
+experience using it quite good. Seeing as Heroku have axed the free/hobby tier I decided to look at what else is out there and decided to give <a href="https://render.com/">Render</a> a go.</p>
+<h2>Getting started with Render</h2>
+<p>The first step is to ensure the app is a repository on Github. You can create the server and client sides as separate
+repos and deploy them separately but my app is a mono-repo with both client and server sides in the one repo. Render
+lets you select the repo and the branch that you wish to deploy from. I chose main.</p>
+<p>I set the root directory as ./server and added the build command <code>npm i && cd ../client && npm i && npm run build</code> which
+would install the relevant dependencies listed in the <code>package.json</code> file and then cd into the client folder and run the command <code>npm run build</code> which
+creates the <code>/dist</code> folder with the prepared Vite app index.html and assets.</p>
+<p>Render asks for the start command - <code>npm run start</code> - which starts the server running.</p>
+<p>While my app isn’t using a database there are keys that are stored as environment variables and Render has a section to enter these as key value pairs. </p>
+<p>Once the commands and values are entered it’s as simple as clicking on deploy to deploy the web app.</p>
+<p>Cards on the table - it took me quite a few attempts to get it right. I encountered failed builds, deployments that
+seemed to have gone live but threw an error when trying to view the site. Viewing the logs Render provides was useful in
+trying to debug what was happening.
+</p>
+<p>What’s nice is that when any changes are pushed to the main branch will be automatically deployed.</p>
+
+<h2>It's working!..or not...</h2>
+<p>The app ran as expected on Chrome on my Mac browser but when I tested it on iOS Chrome I couldn’t get any results when
+submitting a location. Initially I thought it might be an issue with the form submission. I considered it might be a quirk of iOS browsers and that it might require a button to trigger the form submission. I tried, and it didn't.</p>
+<p>My next attempt at debugging was to test the site in a different browser on my mac - Safari. Same result -
+no weather results. Opening dev tools shed a bit more light on the issue - I spotted a
+console error: <code>Fetch API cannot load due to access control checks</code>.</p>
+<p>After a bit of digging I realised that the <code>POST</code> request to the server was using the local server url http://localhost:8800 which worked perfectly when developing locally (and Chrome on the Mac seemed to forgive this on the deployed app) but Safari (and iOS browsers) would not fetch data from a url deemed unsafe.</p>
+<p>I managed to fix this by creating an environment variable for local use only - <code>env.local</code> - which would store the local url and then within Render's environment variable section update it with the live url.</p>
+<p> Bingo. It worked.</p>
+<h2>Learnings</h2>
+<p>Definitely a valuable learning experience, even though it was frustrating at times!</p>
+<p>I will explore further the use of environment variables for local and production use and try to integrate them more in future projects.</p>

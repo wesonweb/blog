@@ -7,15 +7,15 @@
   <header>
     {% include "header.html" %}
   </header>
-  <div class="container">
-    {{ content | safe }}
+  <article class="container blog__container">
     <ul class="tag__container">
       {% for tag in tags %}
       <li><a href="/blogs/tag/{{ tag | slugify }}/" class="tag">{{ tag }}</a></li>
       {% endfor %}
     </ul>
+    {{ content | safe }}
     {% include "return.html" %}
-    </div>
+    </article>
   <footer>
     {% include "footer.html" %}
   </footer>
