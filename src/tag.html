@@ -11,9 +11,8 @@ eleventyComputed:
 ---
 
 <h2># {{ tag }}</h2>
-
 {% for blog in collections[tag] %}
-  <p><a href="{{blog.url}}">{{ blog.data.title }}</a></p>
+  <p><span class="marker">&#62;</span> <a href="{{blog.url}}">{{ blog.data.title }}</a></p>
 {% endfor %}
 
 {% include "return.html" %}
