@@ -14,8 +14,7 @@ experience quite good. Seeing as Heroku have axed the free/hobby tier I decided 
 <h2>Getting started with Render</h2>
 <p>The first step is to ensure the app is pushed to a repository on Github. My set up has both client and server sides in the same repo but it is possible to deploy each separately. Render
 lets you select the repo and the branch that you wish to deploy from.</p>
-<p>There are various commands to enter in Render once you've connected your repo. I set the root directory as ./server and added the build command <code>npm i && cd ../client && npm i && npm run build</code> which
-would install the relevant dependencies listed in the <code>package.json</code> file and then cd into the client folder and run the command <code>npm run build</code>. This
+<p>There are various commands to enter in Render once you've connected your repo. I set the root directory as ./server and added within the <code>package.json</code> file there is a script <code>npm run build</code> that installs the necessary npm packages and accesses the client folder to build the Vite app.</p> <p>This
 creates the <code>/dist</code> folder with the Vite index.html file and assets.</p>
 <p>Render asks for the start command - <code>npm run start</code> - which starts the server running.</p>
 <p>While my app isn’t using a database there are keys that are stored as environment variables and Render has a section to enter these as key value pairs. </p>
