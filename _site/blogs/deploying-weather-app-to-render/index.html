@@ -55,7 +55,7 @@ creates the <code>/dist</code> folder with the Vite index.html file and assets.<
 seemed to have gone live but threw an error when trying to view the site. Viewing the logs Render provides was useful in
 trying to debug what was happening.
 </p>
-<p>What’s nice is that when any changes are pushed to the main branch it will be automatically deployed.</p>
+<p>What’s nice is that once you push changes to the main branch it is automatically deployed.</p>
 
 <h2>It's working!..or not...</h2>
 <p>When deployed, the app ran as expected on Chrome on my Mac browser but when I tested it on iOS Chrome I couldn’t get any results when
@@ -65,7 +65,7 @@ no weather results. Opening dev tools shed a bit more light on the issue - I spo
 console error: <code>Fetch API cannot load due to access control checks</code>.</p>
 <p>After a bit of digging I realised that the <code>POST</code> request to the server was using the local server url http://localhost:8800 which worked perfectly locally (and Chrome on the Mac seemed to forgive this on the deployed app) but Safari (and iOS browsers) refused to fetch data.</p>
 <p>I managed to fix this by creating a <code>env.local</code> file - which would store the local url as an environment variable and load it locally and then within Render's environment variable section I was able to update its value with the live url.</p>
-<p> Bingo. It worked. You can <a href="https://weather-app-2p23.onrender.com">view the weather app here</a>.</p>
+<p> Bingo. It worked. You can <a href="https://weather-app-2p23.onrender.com">view the weather app here</a> and the <a href="https://github.com/wesonweb/blog">Github repo here</a>.</p>
 <h2>Learnings</h2>
 <p>Definitely a valuable learning experience, even though it was frustrating at times!</p>
 <p>I will explore further the use of environment variables for local and production use and try to integrate them more in future projects.</p>
