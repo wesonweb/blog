@@ -4,9 +4,12 @@
   --background: #1b1a1a;
   --text: #fff;
   --accent: #00ffbb;
+  --code: #ed9696;
 
   --transition: .4s ease-in-out;
   --opacity: .8;
+
+  --container: calc(100% - 1rem);
 }
 
 
@@ -37,7 +40,7 @@ footer {
 }
 /* container */
 .container {
-  width: calc(100% - 1rem);
+  width: var(--container, 100%);
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -158,10 +161,11 @@ a.link--primary:hover {
 /* images */
 
 img {
-  max-width: 100%;
-  display: block;
-  object-fit: contain;
-  margin: 2.5rem 0;
+    display: block;
+    width: 100%;
+    max-width: var(--container);
+    object-fit: contain;
+    margin: 2.5rem 0;
 }
 
 /* header */
@@ -282,11 +286,28 @@ svg path {
 .return__blogs {
   margin-top: 2rem;
 }
+
+figure {
+    margin-bottom: 1.5rem;
+}
+
+figure img {
+    all: unset;
+    width: 100%;
+    display: block;
+    margin-bottom: 0;
+}
+
+figcaption {
+    padding: 6px 12px;
+    background: #333232;
+    letter-spacing: 1px;
+}
 pre {
-  background: #000;
-  border: 1px solid #ddd;
-  padding: 4px 0 4px 8px;
-  border-left: 3px solid #d2c736;
+  background: #333232;
+  border: 1px solid var(--code);
+  padding: 8px 0 8px 8px;
+  border-left: 3px solid var(--code);
   color: #fff;
   page-break-inside: avoid;
   font-family: monospace;
@@ -298,10 +319,15 @@ pre {
   word-wrap: break-word;
 }
 
+pre span {
+    display: inline;
+    padding: 0 4px;
+    color: #aaaaaa;
+}
 code {
   page-break-inside: avoid;
   padding: 0 4px;
-  color: #ed9696;
+  color: var(--code);
 
 }
 .marker {

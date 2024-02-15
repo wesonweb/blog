@@ -8,6 +8,10 @@ title: 'Blogs'
   <article class="blog__item">
     <h2><a href="{{blog.url}}">{{ blog.data.title }}</a></h2>
     <p>{{ blog.data.date.toLocaleDateString('en-GB', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}}</p>
-  </article>
+
+    {% for blog in collections[tag] %}
+    <p><span class="marker">&#62;</span> <a href="{{blog.url}}">{{ blog.data.title }}</a></p>
+    {% endfor %}
+</article>
   {% endfor %}
 </section>

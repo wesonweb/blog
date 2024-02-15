@@ -1,0 +1,61 @@
+---
+title: "Building a weather app with Vite and Node.js"
+date: 2024-02-15
+tags:
+- API
+- React
+- Node
+---
+<h1>{{ title }}</h1>
+<p>&mdash; {{ date.toLocaleDateString("en-GB", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }}
+</p>
+
+<p>Building a weather app is a great way to interact with an external API and the data it returns.</p>
+
+<p>I chose <a href="https://openweathermap.org/">OpenWeatherMap&apos;s API</a> as it provides a free plan where you can make up to 60 API calls per minute - more than enough for this project.</p>
+<h2>Getting an API key</h2>
+<p>It&apos;s free and easy to set up an account. Once you do that you can generate an API key to access their API.</p>
+<p>It&apos;s common to create and app like this using only front end technologies, fetching data on the client side.</p>
+<p>However, even if your API key is stored in a <code>.env</code> file it can still be exposed in browsers' dev tools, should anyone go looking. This could be an expensive mistake should anyone steal your API key and make calls that are charged to your account!</p>
+<p>With that in mind, I decided to set up a simple Node.js server that would offer an additional layer of security.</p>
+
+<h2>Getting started</h2>
+<p>After creating the Vite app and removing unrequired boilerplate files, there were a few other packages that I installed on the client side. </p>
+<p><a href="https://www.npmjs.com/package/i18n-iso-countries">i18-iso-countries</a> is a package that takes the country code returned by the API and displays the complete country name. For example, 'FR' would be displayed on the app as 'France'</p>
+<p><a href="https://www.npmjs.com/package/react-hot-toast ">react-hot-toast</a> is a handy package that can display notifications to the user on the front end, such as errors or messaging to improve user experience.</p>
+<p>In the app, if a user tries to fetch weather but forgets to enter a location they would see this:</p>
+<img src="/assets/images/enter-location.png" alt="a web page with a form to enter a location. A notification is showing at the top of the page and says please enter a location">
+<p>The font end uses a component that contains a form where the user enters the location they want to receive weather
+information about and a component to display the information returned by the API.</p>
+<h2>Calling the OpenWeatherMap API</h2>
+<p>The call to the API begins in the <code>App.jsx</code> file where it receives the location that the user entered in the <code>&#60;Form &#47;&#62;</code> component and when submitted by the user triggers a function to make the API call.</p>
+<p>Using the Fetch API a <code>POST</code> request is sent to the node.js server along with the location provided by the user which is converted to JSON and sent in the body of the request object. The node.js server receives the request and the location is interpolated into the API endpoint, along with the API key which is stored in a <code>.env</code> file server-side, which ensures it cannot be viewed should someone nefarious try to find it in the browser&apos;s dev tools.</p>
+<pre>const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${WEATHER_API_KEY}`</pre>
+<p>The server responds with status code 200 if the http request was successful and the JSON body response is received in
+the front end where a setter function updates the state with the weather object received.</p>
+<p>A try catch block is used to catch any errors that might occur, such as the API being down or an error in the endpoint.</p>
+<h2>Unix Timestamp - Epoch time</h2>
+<p>Sunrise and sunset times are returned from the API as Unix timestamps (Epoch time) and are formatted to Universal
+Coordinated Time (UTC). </p>
+<p>They can be converted to human readable format by using the <code>.toLocaleTimeString()</code> method on a
+<code>Date</code> instance. Additional options can be added for local customisations.</p>
+<p>For example, the sunrise time is returned as <code>1644916800</code> and is converted to <code>07:00</code> like this:</p>
+<pre>const sunriseTime = new Date((sunrise + timezone) * 1000).toLocaleTimeString('en-GB', {timeStyle: 'short'})
+<span>// 07:00</span></pre>
+<p><code>sunrise</code> is the value returned by the API and <code>timezone</code> is the shift in seconds from Coordinated Universal Time (UCT) in that country. We multiply by 1000 because JavaScript uses milliseconds. It is then converted to human readable form.</p>
+<h2>Using the time at location to change the background</h2>
+<p>Once we have the sunrise and sunset times calculated we can obtain the current time at location in a similar way. The <code>currentUTCTime</code> variable uses the <code>getTime()</code> method on the <code>new Date()</code> instance and offsets it if it&apos;s British Summer Time using the <code>getTimezoneOffset</code> method.</p>
+<pre>const utcAtLocation = currentUTCTime + timezone
+<span>// UTC at location in seconds</span>
+const timeAtLocation = new Date(utcAtLocation * 1000).toLocaleTimeString('en-GB', {timeStyle: 'short'})
+<span>// time converted to milliseconds for JS and to human readable form</span></pre>
+<p>Knowing the current time at the location allows me to conditionally render a different background for pre or post sunrise, as you can see in the screenshots below:</p>
+<figure>
+    <img src="/assets/images/postsunrise.png" alt="The weather for Rugby showing 15C overcast clouds time 12.24 and sunrise 7:22 and sunset 17:16 on a blue background which sits on top of a background image of clouds">
+    <figcaption>Day time background image if the time at location is after sunrise and before sunset</figcaption>
+</figure>
+<figure>
+    <img src="/assets/images/presunrise.png" alt="The night time weather for Vancouver, Canada wit 4C temperature, overcast clouds, time is 4:24, sunrise 7:22 and sunset 17:31. There is a background image of a starry night with the tops of trees seen at the bottom of the image.">
+    <figcaption>Night time background image if the time at location is after sunset and before sunrise</figcaption>
+</figure>
+<p>You can <a href="https://weather-app-2p23.onrender.com/">view the weather app deployed here</a> and <a href="https://github.com/wesonweb/weather">look at the Github repo here</a></p>
