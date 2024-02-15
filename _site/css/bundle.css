@@ -30,6 +30,7 @@ body {
   font-family: Rubik, sans-serif;
   background-color: var(--background);
   line-height: 1.7;
+  width: 100%;
   color: var(--text);
   display: flex;
   flex-direction: column;
