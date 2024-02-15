@@ -7,6 +7,8 @@ tags:
 - Node
 ---
 <h1>{{ title }}</h1>
+<p>&mdash; {{ date.toLocaleDateString("en-GB", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }}
+</p>
 
 <p>I've deployed full stack apps before. During my Le Wagon bootcamp I used Heroku and found the developer
 experience quite good. Seeing as Heroku have axed the free/hobby tier I decided to look at what else is out there and as I'd already tried Google's Firestore hosting I decided to give <a href="https://render.com/">Render</a> a go.</p>
