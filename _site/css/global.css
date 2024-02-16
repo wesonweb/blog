@@ -1,10 +1,11 @@
 
 
 :root {
-  --background: #1b1a1a;
+  --background: #201f1f;
   --text: #fff;
-  --accent: #00ffbb;
-  --code: #ed9696;
+  --accent: #31ded5;
+  --code: #8ea8f5;
+  --code-bg: #111f2d;
 
   --transition: .4s ease-in-out;
   --opacity: .8;
@@ -305,11 +306,11 @@ figcaption {
     letter-spacing: 1px;
 }
 pre {
-  background: #333232;
+  background: var(--code-bg);
   border: 1px solid var(--code);
   padding: 8px 0 8px 8px;
   border-left: 3px solid var(--code);
-  color: #fff;
+  color: var(--text);
   page-break-inside: avoid;
   font-family: monospace;
   font-size: 15px;
@@ -323,7 +324,7 @@ pre {
 pre span {
     display: inline;
     padding: 0 4px;
-    color: #aaaaaa;
+    color: #a7aaad;
 }
 code {
   page-break-inside: avoid;

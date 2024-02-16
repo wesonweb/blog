@@ -6,6 +6,7 @@
 <body>
   <header>
     {% include "header.html" %}
+    {% block head %} {% endblock %}
   </header>
     <div class="container">
       {{ content | safe }}
