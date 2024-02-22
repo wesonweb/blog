@@ -27,6 +27,9 @@
   </nav>
 </div>
 
+    
+    <link rel="stylesheet" href="/css/blog.css">
+    
   </header>
   <article class="container blog__container">
     <ul class="tag__container">
@@ -44,20 +47,20 @@
 
 <p>When I've deployed full stack apps before I've used Heroku and found the developer
 experience quite good. I've also used Google's Firestore hosting. Seeing as Heroku have axed the free/hobby tier I decided to look at what else is out there and decided to give <a href="https://render.com/">Render</a> a go.</p>
-<p>The weather app I've built uses Vite for the front end and a Node server with Express for the back end. You can read how it was build here</a>.</p>
+<p>The weather app I've built uses Vite for the front end and a Node server with Express for the back end. You can <a href="../building-weather-app-vite-node">read how it was build here</a>.</p>
 <h2>Getting started with Render</h2>
 <p>The first step is to ensure the app is pushed to a repository on Github. My set up has both client and server sides in the same repo but it is possible to deploy each separately. Render
 lets you select the repo and the branch that you wish to deploy from.</p>
 <p>There are various commands to enter in Render once you've connected your repo. I set the root directory as ./server and added a script command in the <code>package.json</code> file <code>npm run build</code> that installs the necessary npm packages and accesses the client folder to build the Vite app.</p> <p>This
 creates the <code>/dist</code> folder with the Vite index.html file and assets.</p>
 <p>Render asks for the start command - <code>npm run start</code> - which starts the server running.</p>
-<p>While my app isn’t using a database there are keys that are stored as environment variables and Render has a section to enter these as key value pairs. </p>
-<p>Once the commands and values are entered it’s as simple as clicking on deploy to deploy the web app.</p>
+<p>While my app isn&apos;t using a database there are keys that are stored as environment variables and Render has a section to enter these as key value pairs. </p>
+<p>Once the commands and values are entered it&apos;s as simple as clicking on deploy to deploy the web app.</p>
 <p>Cards on the table - it took me quite a few attempts to get it right. I encountered failed builds, deployments that
 seemed to have gone live but threw an error when trying to view the site. Viewing the logs Render provides was useful in
 trying to debug what was happening.
 </p>
-<p>What’s nice is that once you push changes to the main branch it is automatically deployed.</p>
+<p>What&apos;s nice is that once you push changes to the main branch it is automatically deployed.</p>
 
 <h2>It's working!..or not...</h2>
 <p>When deployed, the app ran as expected on Chrome on my Mac browser but when I tested it on iOS Chrome I couldn’t get any results when
