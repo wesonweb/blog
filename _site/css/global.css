@@ -85,7 +85,7 @@ h1 {
 h2 {
   --min: 1.5em;
   /* minimum value */
-  --val: 4vw;
+  --val: 3vw;
   /* preferred value = 4% viewport width */
   --max: 2.25em;
   /* maximum value */
@@ -93,7 +93,7 @@ h2 {
 h3 {
   --min: 1.25em;
   /* minimum value */
-  --val: 4vw;
+  --val: 2vw;
   /* preferred value = 4% viewport width */
   --max: 1.875em;
   /* maximum value */
@@ -102,7 +102,7 @@ h3 {
 p, a {
   --min: 1em;
   /* minimum value */
-  --val: 2.5vw;
+  --val: 2vw;
   /* preferred value = 2.5% viewport width */
   --max: 1.25em;
   /* maximum value */
@@ -243,10 +243,10 @@ svg path {
   margin-top: 3rem;
 }
 .blog__item {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .blog__item h2 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .blog__list {
