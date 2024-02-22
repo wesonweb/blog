@@ -6,6 +6,9 @@
 <body>
   <header>
     {% include "header.html" %}
+    {% block head %}
+    <link rel="stylesheet" href="/css/blog.css">
+    {% endblock %}
   </header>
   <article class="container blog__container">
     <ul class="tag__container">
