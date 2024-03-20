@@ -235,3 +235,18 @@ svg:hover path {
 svg path {
   transition: var(--transition);
 }
+
+/* utility classes */
+
+.ms-5 {
+    margin-left: 2rem;
+}
+.me-5 {
+    margin-right: 2rem;
+}
+.mt-5 {
+    margin-top: 2rem;
+}
+.mb-5 {
+    margin-bottom: 2rem;
+}
