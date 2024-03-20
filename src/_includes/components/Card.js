@@ -6,8 +6,10 @@ function Card({
             return html`
                 <div class="card__container">
                     <div class="card__header">
-                        <img src="${imageUrl}" alt="${alt}" class="card__image">
-                        <h2 class="card__title">${title}</h2>
+                        <figure>
+                            <img src="${imageUrl}" alt="${alt}" class="card__image">
+                        </figure>
+                            <h2 class="card__title">${title}</h2>
                     </h2>
                     <div class="card__content">
                         <p class="card__description">${description}</p>
